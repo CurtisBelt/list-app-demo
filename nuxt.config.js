@@ -16,6 +16,10 @@ export default {
     fix: true
   },
 
+  netlifyFiles: {
+    existingFilesDirectory: './netlify'
+  },
+
   modern: isProd,
 
   build: {
