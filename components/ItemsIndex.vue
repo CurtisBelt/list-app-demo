@@ -1,5 +1,8 @@
 <template>
   <div class="ItemsIndex">
+    <h1 class="text-xl font-bold mb-4">
+      Your List: {{ $cookies.get('list') }}
+    </h1>
     <ItemsTable :items="items" />
     <ItemsCreate @createItem="onCreateItem" />
   </div>
