@@ -16,6 +16,10 @@ export default {
     fix: true
   },
 
+  generate: {
+    fallback: true
+  },
+
   loading: false,
 
   netlifyFiles: {
