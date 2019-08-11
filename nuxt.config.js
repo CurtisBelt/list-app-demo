@@ -20,6 +20,13 @@ export default {
     existingFilesDirectory: './netlify'
   },
 
+  axios: {
+    proxy: true
+  },
+  proxy: {
+    '/.netlify/functions': 'http://localhost:9000'
+  },
+
   modern: isProd,
 
   build: {
