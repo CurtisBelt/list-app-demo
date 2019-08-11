@@ -1,5 +1,5 @@
 [build]
-  publish = "dist"
+  publish = ".nuxt"
   command = "yarn prepare"
   functions = "functions-build"
 [build.environment]
