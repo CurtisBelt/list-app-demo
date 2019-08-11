@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import uuidv4 from 'uuid/v4'
 import ItemsTable from '~/components/ItemsTable'
 import ItemsCreate from '~/components/ItemsCreate'
 
@@ -32,14 +33,23 @@ export default {
     }
   },
   created() {
+    // If URL query param `list` is set, save value to cookie
     if (typeof this.$route.query.list !== 'undefined') {
       this.$cookies.set('list', this.$route.query.list)
-      this.$router.push({
-        path: '/',
-        query: undefined
-      })
-      this.$nuxt.refresh()
+
+      // If the query param wasn't available, and there's also no cookie set - save a UUID.
+    } else if (typeof this.$cookies.get('list') === 'undefined') {
+      this.$cookies.set('list', uuidv4())
     }
+
+    /**
+     * Clear the query param and refresh asyncData()
+     */
+    this.$router.push({
+      path: '/',
+      query: undefined
+    })
+    this.$nuxt.refresh()
   },
   methods: {
     onCreateItem(item) {
