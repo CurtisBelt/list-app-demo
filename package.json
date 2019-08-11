@@ -13,7 +13,7 @@
     "dev:app": "nuxt",
     "dev:functions": "netlify-lambda serve functions -c ./webpack.functions.js",
     "prepare": "npm-run-all --parallel prepare:**",
-    "prepare:app": "nuxt build",
+    "prepare:app": "nuxt generate",
     "prepare:functions": "netlify-lambda build functions -c ./webpack.functions.js",
     "start": "npm-run-all --parallel start:**",
     "start:app": "nuxt start",
