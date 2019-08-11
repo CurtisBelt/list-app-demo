@@ -8,13 +8,15 @@ export default {
 
   plugins: [],
 
-  modules: ['@nuxtjs/axios'],
+  modules: ['@nuxtjs/axios', 'cookie-universal-nuxt'],
 
   devModules: ['@nuxtjs/tailwindcss', '@nuxtjs/eslint-module'],
 
   eslint: {
     fix: true
   },
+
+  loading: false,
 
   netlifyFiles: {
     existingFilesDirectory: './netlify'
