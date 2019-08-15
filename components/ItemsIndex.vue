@@ -24,7 +24,10 @@ export default {
       '.netlify/functions/items-read-from-list',
       {
         params: {
-          list: context.app.$cookies.get('list')
+          list:
+            context.params?.list?.length > 0
+              ? context.params?.list
+              : context.app.$cookies.get('list')
         }
       }
     )
@@ -33,13 +36,23 @@ export default {
     }
   },
   created() {
-    // If URL query param `list` is set, save value to cookie
-    if (typeof this.$route.query.list !== 'undefined') {
+    if (this.$route.params?.list?.length > 0) {
+      // Skip this block if were on a specific list route
+      return
+    }
+    if (this.$route.query?.list?.length > 0) {
+      // If URL query param `list` is set, save value to cookie
       this.$cookies.set('list', this.$route.query.list)
-
+    } else if (
+      this.$route.query?.list?.length === 0 || // allows resetting default list by requesting blank list name
+      this.$cookies.get('list') === undefined ||
+      this.$cookies.get('list')?.length === 0
+    ) {
       // If the query param wasn't available, and there's also no cookie set - save a UUID.
-    } else if (typeof this.$cookies.get('list') === 'undefined') {
       this.$cookies.set('list', uuidv4())
+    } else {
+      // No refresh needed
+      return
     }
 
     /**
