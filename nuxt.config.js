@@ -38,6 +38,9 @@ export default {
   build: {
     parallel: isDev,
     cache: isDev,
-    hardSource: isDev
+    hardSource: isDev,
+    babel: {
+      plugins: ['@babel/plugin-proposal-optional-chaining']
+    }
   }
 }
