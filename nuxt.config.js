@@ -3,7 +3,7 @@ const isDev = !isProd
 
 export default {
   head: {
-    title: 'Nuxt.js Template'
+    title: 'List App Demo'
   },
 
   plugins: [],
