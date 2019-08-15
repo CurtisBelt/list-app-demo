@@ -1,10 +1,20 @@
-# Nuxt.js Template
+# List App Demo
 
-> My personal [Nuxt.js](https://github.com/nuxt/nuxt.js) template used for starting other projects.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5456473d-12c2-404a-a946-b6d1de3abe10/deploy-status)](https://list-app-demo.curtisbelt.dev)
 
-At first, it won't be much different than using [create-nuxt-app](https://github.com/nuxt/create-nuxt-app) with the equivalent options selected - however I will continue to maintain this repo, adding features and configurations that meet my personal preferences.
+https://list-app-demo.curtisbelt.dev
 
-## Features :tada:
+
+
+### Tech
+
+- Written using Nuxt.js, a Vue.js framework.
+- Netlify: Auto-deploy to production on push to master branch. Pull requests also get automatic "preview" deployments for testing.
+- FaunaDB: Serverless NoSQL database, used for persistent data storage of all lists/items.
+
+### Nuxt.js Template
+
+https://github.com/CurtisBelt/nuxtjs-template/
 
 - ESLint `yarn lint`
 - Prettier `yarn format`
@@ -15,16 +25,14 @@ At first, it won't be much different than using [create-nuxt-app](https://github
 
 ## Usage
 
+Note: Must have FaunaDB secret token and configure `.env` file.
+
 ```sh
 # install dependencies
 yarn install
 
-# serve with hot reload at localhost:3000
+# serve with hot reload at localhost:3000 / launch netlify-lambda
 yarn dev
-
-# build for production and launch server
-yarn build
-yarn start
 
 # generate static project
 yarn generate
