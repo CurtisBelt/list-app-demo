@@ -1,8 +1,34 @@
 <template>
   <div class="ItemsIndex">
-    <h1 class="text-xl font-bold mb-4">
-      Your List: {{ $cookies.get('list') }}
-    </h1>
+    <div class="text-xl font-bold mb-4">Your List: {{ getOpenedList() }}</div>
+    <ul class="text-sm mb-4 ml-8 list-disc">
+      <li>If no list name is provided, a random one will be generated.</li>
+      <li>
+        You may also use ?list=your_list_name in the URL to open a list via
+        direct link.
+      </li>
+    </ul>
+    <form class="mb-4 text-sm" @submit.prevent="openList">
+      <div class="flex items-center">
+        <div class="whitespace-no-wrap font-bold mr-2">Open List:</div>
+        <input
+          id="listName"
+          ref="listName"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          type="text"
+          placeholder="Type list name"
+        />
+
+        <button
+          type="submit"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold ml-2 py-2 px-3 rounded"
+          @click.prevent="openList"
+        >
+          Open
+        </button>
+      </div>
+    </form>
+
     <ItemsTable :items="items" />
     <ItemsCreate @createItem="onCreateItem" />
   </div>
@@ -67,6 +93,20 @@ export default {
   methods: {
     onCreateItem(item) {
       this.items.push(item)
+    },
+    getOpenedList() {
+      return this.$route.params?.list?.length > 0
+        ? this.$route.params?.list
+        : this.$cookies.get('list')
+    },
+    openList() {
+      this.$cookies.set(
+        'list',
+        this.$refs.listName.value.length > 0
+          ? this.$refs.listName.value
+          : uuidv4()
+      )
+      this.$nuxt.refresh()
     }
   }
 }
