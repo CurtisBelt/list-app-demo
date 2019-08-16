@@ -27,7 +27,6 @@ export default {
   data() {
     return {
       item: {
-        list: this.$cookies.get('list'),
         text: ''
       }
     }
@@ -40,12 +39,20 @@ export default {
       if (this.item && this.item.text) {
         const createdItem = await this.$axios.$post(
           '.netlify/functions/items-create',
-          this.item
+          {
+            ...this.item,
+            ...{ list: this.getOpenedList() }
+          }
         )
         this.$emit('createItem', createdItem)
         this.item.text = ''
         this.$refs.itemText.focus()
       }
+    },
+    getOpenedList() {
+      return this.$route.params?.list?.length > 0
+        ? this.$route.params?.list
+        : this.$cookies.get('list')
     }
   }
 }
