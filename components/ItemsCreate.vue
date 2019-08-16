@@ -41,7 +41,7 @@ export default {
           '.netlify/functions/items-create',
           {
             ...this.item,
-            ...{ list: this.getOpenedList() }
+            ...{ list: this.getOpenedList().toString() }
           }
         )
         this.$emit('createItem', createdItem)
