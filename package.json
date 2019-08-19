@@ -26,7 +26,7 @@
     "cookie-universal-nuxt": "^2.0.17",
     "faunadb": "^2.7.0",
     "nuxt-edge": "^2.9.0-26089929.de7ed24b",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.3"
   },
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.2.0",
