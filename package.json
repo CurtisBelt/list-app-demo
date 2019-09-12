@@ -24,7 +24,7 @@
     "@nuxtjs/netlify-files": "^1.0.0",
     "@nuxtjs/tailwindcss": "^1.1.2",
     "cookie-universal-nuxt": "^2.0.17",
-    "faunadb": "^2.8.0",
+    "faunadb": "^2.8.1",
     "nuxt": "^2.9.2",
     "uuid": "^3.3.3"
   },
