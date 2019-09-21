@@ -23,7 +23,7 @@
     "@nuxtjs/axios": "^5.6.0",
     "@nuxtjs/netlify-files": "^1.0.0",
     "@nuxtjs/tailwindcss": "^1.1.2",
-    "cookie-universal-nuxt": "^2.0.17",
+    "cookie-universal-nuxt": "^2.0.18",
     "faunadb": "^2.8.1",
     "nuxt": "^2.9.2",
     "uuid": "^3.3.3"
